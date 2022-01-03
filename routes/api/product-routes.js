@@ -19,16 +19,10 @@ router.get('/', (req, res) => {
       {
         model: Category,
         attributes: ['id', 'category_name'],
-        // include: [
-        //   {
-        //     model: Product,
-        //     attributes: ['product_name']
-        //   }
-        // ]
       },
       {
         model: Tag,
-        as: 'tagged_products',
+        as: 'product_tags',
         attributes: ['id', 'tag_name']
       }
     ]
@@ -65,16 +59,10 @@ router.get('/:id', (req, res) => {
       {
         model: Category,
         attributes: ['id', 'category_name'],
-      //   include: [
-      //     {
-      //     model: Product,
-      //     attributes: ['product_name']
-      //   }
-      // ]
       },
       {
         model: Tag,
-        as: 'tagged_products',
+        as: 'product_tags',
         attributes: ['id', 'tag_name']
       }
     ]
