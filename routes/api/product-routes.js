@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   Product.findAll({
     attributes: [
       'id',
-      'product-name',
+      'product_name',
       'price',
       'stock',
       'category_id'
@@ -19,28 +19,31 @@ router.get('/', (req, res) => {
       {
         model: Category,
         attributes: ['id', 'category_name'],
-        include: {
-          model: Product,
-          attributes: ['product-name']
-        }
+        // include: [
+        //   {
+        //     model: Product,
+        //     attributes: ['product_name']
+        //   }
+        // ]
       },
       {
         model: Tag,
+        as: 'tagged_products',
         attributes: ['id', 'tag_name']
       }
     ]
   })
-  .then(productData => {
-    if (!productData) {
-      res.status(404).json({ message: 'No product found with this ID.' });
-      return;
-    }
-    res.json(productData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then(productData => {
+      if (!productData) {
+        res.status(404).json({ message: 'No product found with this ID.' });
+        return;
+      }
+      res.json(productData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // get one product
@@ -53,7 +56,7 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'product-name',
+      'product_name',
       'price',
       'stock',
       'category_id'
@@ -62,28 +65,31 @@ router.get('/:id', (req, res) => {
       {
         model: Category,
         attributes: ['id', 'category_name'],
-        include: {
-          model: Product,
-          attributes: ['product-name']
-        }
+      //   include: [
+      //     {
+      //     model: Product,
+      //     attributes: ['product_name']
+      //   }
+      // ]
       },
       {
         model: Tag,
+        as: 'tagged_products',
         attributes: ['id', 'tag_name']
       }
     ]
   })
-  .then(productData => {
-    if (!productData) {
-      res.status(404).json({ message: 'No product found with this ID.' });
-      return;
-    }
-    res.json(productData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then(productData => {
+      if (!productData) {
+        res.status(404).json({ message: 'No product found with this ID.' });
+        return;
+      }
+      res.json(productData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // create new product
@@ -172,17 +178,17 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then(productData => {
-    if (!productData) {
-      res.status(404).json({ message: 'No product found with this ID' });
-      return;
-    }
-    res.json(productData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+    .then(productData => {
+      if (!productData) {
+        res.status(404).json({ message: 'No product found with this ID' });
+        return;
+      }
+      res.json(productData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 module.exports = router;
