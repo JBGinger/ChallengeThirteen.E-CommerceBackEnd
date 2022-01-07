@@ -19,6 +19,9 @@ Please use the following console command to install project dependancies: npm in
 ## Usage
 Before attempting to use this project, be sure to create the database and run the seeds file. You can start the project by typing "npm start" into the console. Once the project has been started, you will be able to enter GET, POST, PUT, and DELETE routes to view and modify the database.
 
+## Walkthrough Video
+https://watch.screencastify.com/v/TRr7GKfgxRtwgCyLB2Vf
+
 ## Contributing
 Please reach out to me through email if you'd like to contribute to this project.
 
